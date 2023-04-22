@@ -27,44 +27,44 @@ public class StatsService {
         return maxMonth + 1; // месяца нумеруются с 1, а индексы массива с 0, нужно сдвинуть ответ на 1
     }
 
-    public int amountSales(long[] sales) {
+    public int totalOfAllSales(long[] sales) {
 
-        int amount = 0;
+        int allAmount = 0;
 
         for (int i = 0; i < sales.length; i++) {
-            amount += sales[i];
+            allAmount += sales[i];
         }
 
-        return amount;
+        return allAmount;
     }
 
     public int averageSalesAmount(long[] sales) {
 
-        return this.amountSales(sales) / sales.length;
+        return this.totalOfAllSales(sales) / sales.length;
 
     }
 
     public int belowAverage(long[] sales) {
-        int b = this.averageSalesAmount(sales);
-        int k = 0;
+        int averageAmount = this.averageSalesAmount(sales);
+        int numberOfSales = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < b) {
-                k = k + 1;
+            if (sales[i] < averageAmount) {
+                numberOfSales = numberOfSales + 1;
             }
 
         }
-        return k;
+        return numberOfSales;
     }
 
     public int aboveAverage(long[] sales) {
-        int b = this.averageSalesAmount(sales);
-        int k = 0;
+        int averageAmount = this.averageSalesAmount(sales);
+        int numberOfSales = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > b) {
-                k = k + 1;
+            if (sales[i] > averageAmount) {
+                numberOfSales = numberOfSales + 1;
             }
 
         }
-        return k;
+        return numberOfSales;
     }
 }
